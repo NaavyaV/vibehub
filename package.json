@@ -1,0 +1,37 @@
+{
+  "name": "vibehub",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Version-control coordination layer for teams whose code is written by AI coding agents.",
+  "type": "module",
+  "workspaces": [
+    "web"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w vibehub-web",
+    "dev:api": "wrangler dev",
+    "build": "npm run build -w vibehub-web",
+    "deploy": "npm run build -w vibehub-web && wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "smoke": "node scripts/smoke.mjs",
+    "cf-typegen": "wrangler types",
+    "db:migrate:local": "wrangler d1 migrations apply vibehub --local",
+    "db:migrate:remote": "wrangler d1 migrations apply vibehub --remote"
+  },
+  "dependencies": {
+    "@cfworker/json-schema": "^4.1.1",
+    "@cloudflare/workers-oauth-provider": "^0.10.3",
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "agents": "^0.22.0",
+    "hono": "^4.13.5",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.22.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.11",
+    "wrangler": "^4.127.1"
+  }
+}

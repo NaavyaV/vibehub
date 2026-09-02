@@ -1,0 +1,17 @@
+# Copy to .dev.vars for local development (never commit .dev.vars).
+
+# GitHub OAuth app.
+# Prod callback:  https://vibehub.<subdomain>.workers.dev/auth/github/callback
+# Local API:      http://localhost:8787/auth/github/callback
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+
+# base64-encoded 32 bytes. Generate with:
+#   node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
+ENCRYPTION_KEY=
+
+# Any long random string.
+SESSION_SECRET=
+
+# Set to "1" to enable local-only /auth/dev-login (no GitHub token / no repo access).
+DEV_LOGIN=1

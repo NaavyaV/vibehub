@@ -1,0 +1,23 @@
+---
+description: Deploy to Cloudflare after completing code changes
+alwaysApply: true
+---
+
+# Auto-deploy after changes
+
+When you finish a set of code or asset changes that affect the running app (Worker, web SPA, MCP, styles, public assets), deploy before ending the turn:
+
+```bash
+npm run deploy
+```
+
+That builds `web` and runs `wrangler deploy`.
+
+## When to deploy
+
+- Default: **yes** after implementing or fixing something user-facing or API-facing.
+- Skip only if: the user said not to deploy, the change is docs/rules-only with no runtime impact, deploy already failed and needs a fix first, or you only answered a question with no edits.
+
+## After deploy
+
+Report the live URL (`https://vibehub.devpost67.workers.dev`) and version ID briefly. Do not ask whether to deploy unless something is unsafe (destructive migrations, secrets, etc.).

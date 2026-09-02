@@ -1,0 +1,41 @@
+name = "vibehub"
+main = "src/index.ts"
+compatibility_date = "2026-08-20"
+compatibility_flags = ["nodejs_compat", "global_fetch_strictly_public"]
+
+[observability]
+enabled = true
+
+[vars]
+PUBLIC_URL = "https://vibehub.devpost67.workers.dev"
+# Comma-separated origins allowed to call the API from a local Vite frontend.
+CORS_ORIGINS = "http://localhost:5173,http://127.0.0.1:5173"
+
+# Serve the built SPA from /web/dist in production.
+[assets]
+directory = "./web/dist"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+run_worker_first = ["/api/*", "/mcp", "/mcp/*", "/authorize", "/authorize/*", "/oauth/*", "/.well-known/*", "/auth/*", "/scoping-prompt", "/workflow"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "vibehub"
+database_id = "8b21fb23-1ded-40fe-8894-fb4a17d952c0"
+migrations_dir = "./migrations"
+
+[[kv_namespaces]]
+binding = "OAUTH_KV"
+id = "70f5314239df469fb323a737b1d3f60d"
+
+[[kv_namespaces]]
+binding = "PUSH_PAYLOADS"
+id = "ab9bae7ea2da4655b1fc21296ba4dfdf"
+
+[[durable_objects.bindings]]
+name = "VIBEHUB_MCP"
+class_name = "VibeHubMCP"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["VibeHubMCP"]

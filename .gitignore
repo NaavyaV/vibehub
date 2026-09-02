@@ -1,0 +1,12 @@
+node_modules/
+.wrangler/
+.dev.vars
+.dev.vars
+dist/
+web/dist/
+*.tsbuildinfo
+worker-configuration.d.ts
+*.log
+.DS_Store
+.vibehub/
+worker-configuration.d.ts
